@@ -1,5 +1,5 @@
 # LLM-Powered-Booking-Analytics-QA-System
-# Hotel Analytics and Customer Support API
+## Hotel Analytics and Customer Support API
 This Flask application provides two main functionalities:
 - Hotel analytics reporting (summary and detailed)
 - Customer query answering using Mistral-7B LLM

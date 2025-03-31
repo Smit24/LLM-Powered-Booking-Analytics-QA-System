@@ -29,23 +29,45 @@ The API will be available at: http://localhost:5001
 1. Analytics Endpoint
 - URL: /analytics
 - Method: POST
-- Request Body (JSON):
+- Input
+> curl -X POST http://localhost:5001/analytics -H "Content-Type: application/json" -d '{"month": 12, "year": 2023}'
+
+Expected Output
 > {
-  "month": 6,          // optional (1-12)
-  "year": 2023,        // optional
-  "day": 15,           // optional
-  "report_type": "summary"  // "summary" or "detailed"
+  "bookings": {
+    "cancellation_rate": 16.32208922742111,
+    "cancellations": 150,
+    "no_shows": 21,
+    "total": 769
+  },
+  "period": "December 2023",
+  "revenue": {
+    "average_daily_rate": 173.97844732921652,
+    "breakdown": {
+      "base": 133078.1381354096,
+      "extra_services": 2200.0
+    },
+    "total": 135278.1381354096
+  },
+  "services": {
+    "early_checkins": 21,
+    "late_checkouts": 15,
+    "laundry_usage": 73,
+    "minibar_usage": 45
+  }
 }
+
 
 2. Question Answering Endpoint
 
 - URL: /ask
 - Method: POST
-- Request Body (JSON):
-
+- Input
 > {
-  "query": "What time is check-in?"
+  "query": "What is the cancellation policy for hotel bookings?"
 }
+- Expected Output
+> Response:  Our cancellation policy varies depending on the room rate and the time of cancellation. For bookings made at least 72 hours in advance, you can cancel your reservation without any penalty. However, if you cancel within 72 hours, you will incur a 10% fee. Some non-refundable rates may not allow cancellations at all. Refunds are subject to the cancellation timing and the terms of the specific rate you booked. Please review the terms and conditions of your booking for more details on our cancellation policy.
 
 3. Health Check
 
